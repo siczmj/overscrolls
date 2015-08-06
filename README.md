@@ -24,7 +24,7 @@ the size of overscroll. So I created a solution that able to report it.
     - ListView --> OverScrollListView
     - ...
 
-3. Create some example to custom overscroll.
+3. Implement some custom overscroll example.
 
 
 
