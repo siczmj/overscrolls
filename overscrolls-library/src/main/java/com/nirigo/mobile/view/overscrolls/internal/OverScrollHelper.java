@@ -3,8 +3,10 @@ package com.nirigo.mobile.view.overscrolls.internal;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.nirigo.mobile.view.overscrolls.interfaces.OverScrollListener;
+import com.nirigo.mobile.view.overscrolls.interfaces.OverScrollMeasure;
 
 /**
  * Created by Sicz-Mesziár János on 2015.08.06..
@@ -25,6 +27,7 @@ public class OverScrollHelper {
     private int scrollState = STATE_SCROLL_STOPPED;
 
     private OverScrollListener onOverScrollListener = null;
+    private OverScrollMeasure onOverScrollMeasure = null;
 
 
     // Constructor ---------------------------------------------------------------------------------
@@ -46,14 +49,14 @@ public class OverScrollHelper {
 
         } else if (action == MotionEvent.ACTION_MOVE) {
 
-            if (targetView.getScrollY() > 0) {
+            if (getScrollY() > 0) {
 
                 if (scrollState == STATE_SCROLL_OVER) {
                     scrollState = STATE_SCROLL_OVER_END;
                     postOverScrollCancel();
                 } else {
                     scrollState = STATE_SCROLL;
-                    postScroll(0, targetView.getScrollY());
+                    postScroll(0, getScrollY());
                 }
 
             } else {
@@ -85,7 +88,14 @@ public class OverScrollHelper {
         return false;
     }
 
-
+    // Functions -----------------------------------------------------------------------------------
+    public int getScrollY(){
+        if(onOverScrollMeasure != null){
+            return onOverScrollMeasure.getScrollY();
+        }else{
+            return targetView.getScrollY();
+        }
+    }
 
     // NOTIFY --------------------------------------------------------------------------------------
     private void postScroll(int scrollX, int scrollY){
@@ -138,4 +148,7 @@ public class OverScrollHelper {
         this.onOverScrollListener = onOverScrollListener;
     }
 
+    public void setOnOverScrollMeasure(OverScrollMeasure onOverScrollMeasure) {
+        this.onOverScrollMeasure = onOverScrollMeasure;
+    }
 }

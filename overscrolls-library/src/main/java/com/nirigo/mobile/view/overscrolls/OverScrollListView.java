@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
 
+import com.nirigo.mobile.view.overscrolls.interfaces.OverScrollMeasure;
 import com.nirigo.mobile.view.overscrolls.internal.OverScrollHelper;
 
 /**
@@ -41,6 +42,11 @@ public class OverScrollListView extends ListView {
     private void init() {
         this.setOverScrollMode(OVER_SCROLL_ALWAYS);
         this.overScroll = new OverScrollHelper(this);
+        this.overScroll.setOnOverScrollMeasure(new OverScrollMeasure() {
+            public int getScrollY() {
+                return computeVerticalScrollOffset();
+            }
+        });
     }
 
     // Events --------------------------------------------------------------------------------------
