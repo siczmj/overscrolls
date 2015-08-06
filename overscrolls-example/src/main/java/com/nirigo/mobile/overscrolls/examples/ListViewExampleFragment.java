@@ -24,6 +24,7 @@ public class ListViewExampleFragment extends BaseFragment {
     private View headerView;
     private TextView indicatorTextView;
 
+    private String initalText;
     private int initialSize;
 
     @Nullable
@@ -54,6 +55,7 @@ public class ListViewExampleFragment extends BaseFragment {
             }
 
             public void onOverScrollStart(ViewGroup parent) {
+                initalText = indicatorTextView.getText().toString();
                 initialSize = indicatorTextView.getMeasuredHeight();
             }
 
@@ -63,6 +65,7 @@ public class ListViewExampleFragment extends BaseFragment {
             }
 
             public void onOverScrollCancel(ViewGroup parent) {
+                indicatorTextView.setText(initalText);
                 setIndicatorSize(initialSize);
             }
         });
