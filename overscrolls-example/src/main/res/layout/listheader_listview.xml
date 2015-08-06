@@ -3,20 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="12dp">
 
     <TextView
         android:id="@+id/indicator"
         android:layout_width="108dp"
         android:layout_height="108dp"
-        android:minHeight="60dp"
         android:layout_gravity="center"
+        android:background="@drawable/shape_circle"
         android:gravity="center"
+        android:minHeight="60dp"
         android:text="X ▪ Y"
         android:textColor="#FFF"
-        android:textSize="16sp"
-        android:background="@drawable/shape_circle"
+        android:textSize="18sp"
+        android:shadowColor="#333"
+        android:shadowDx="1.0"
+        android:shadowDy="1.0"
+        android:shadowRadius="3"
         />
 
 </LinearLayout>

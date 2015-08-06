@@ -2,6 +2,7 @@ package com.nirigo.mobile.overscrolls.examples;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,11 +62,18 @@ public class ListViewExampleFragment extends BaseFragment {
 
             public void onOverScroll(ViewGroup parent, int overscrollX, int overscrollY) {
                 indicatorTextView.setText(overscrollX + " ▪ " + overscrollY);
-                setIndicatorSize(initialSize + overscrollY);
+                if(overscrollY < initialSize){
+                    float angle = 360 * (float)overscrollY / initialSize;
+                    indicatorTextView.setRotationX(angle);
+                }else {
+                    indicatorTextView.setRotationX(0);
+                    setIndicatorSize(overscrollY);
+                }
             }
 
             public void onOverScrollCancel(ViewGroup parent) {
                 indicatorTextView.setText(initalText);
+                indicatorTextView.setRotationX(0f);
                 setIndicatorSize(initialSize);
             }
         });
