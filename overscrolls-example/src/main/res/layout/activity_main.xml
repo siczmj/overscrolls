@@ -1,33 +1,24 @@
-<com.nirigo.mobile.view.overscrolls.OverScrollScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/scrollview">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/icon"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_tab_strip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/wallpaper"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            />
+            android:layout_gravity="top"
+            android:background="#505050"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="#fff"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/icon"
-            android:layout_marginTop="10dp"
-            android:text="@string/hello_world"/>
+    </android.support.v4.view.ViewPager>
 
-    </RelativeLayout>
-</com.nirigo.mobile.view.overscrolls.OverScrollScrollView>
+</RelativeLayout>
