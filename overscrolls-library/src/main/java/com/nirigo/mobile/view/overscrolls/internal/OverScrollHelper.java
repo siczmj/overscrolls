@@ -35,8 +35,14 @@ public class OverScrollHelper {
     // Events --------------------------------------------------------------------------------------
     public boolean onTouchEvent(MotionEvent event) {
 
+        // When nobody watch then do nothing
+        if(onOverScrollListener == null)
+            return false;
+
         int action = event.getAction();
         if (action == MotionEvent.ACTION_DOWN) {
+
+            // Do nothing...
 
         } else if (action == MotionEvent.ACTION_MOVE) {
 
