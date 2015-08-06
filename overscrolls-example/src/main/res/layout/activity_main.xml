@@ -15,9 +15,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="#505050"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:textColor="#fff"/>
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#fff"
+            android:textAllCaps="true"
+            />
 
     </android.support.v4.view.ViewPager>
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.nirigo.mobile.overscrolls.examples.ListViewExampleFragment;
 import com.nirigo.mobile.overscrolls.examples.ScrollViewExampleFragment;
 import com.nirigo.mobile.overscrolls.other.BaseFragment;
 import com.nirigo.mobile.overscrolls.other.ViewPagerAdapter;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Class<? extends BaseFragment>> fragments = new ArrayList<>();
         fragments.add(ScrollViewExampleFragment.class);
+        fragments.add(ListViewExampleFragment.class);
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
         viewpager.setAdapter(adapter);
