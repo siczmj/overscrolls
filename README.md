@@ -6,6 +6,7 @@ Originally, my goal was building an unique "pull-to-refresh" effects. I thought 
 overscroll offsets. I was surprised that there is no method that would give it back the overscroll
 size. So I created a solution that able to report the size of overscroll.
 
+# Demo
 
 # Concept
 
@@ -30,3 +31,20 @@ It's a practical tool if you want to build a custom:
 - Parallax scroll
 - EdgeEffect
 
+# Usage
+
+(In progress...)
+
+## Download
+
+There is enough to download only the overscrolls-library which contains all neccessary files.
+
+------
+
+## TODO
+
+- ....
+
+
+## License
+See the LICENSE file in the project root.
