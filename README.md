@@ -4,7 +4,7 @@
 
 Originally, my goal was building an unique "pull-to-refresh" effects on Android. I thought it can I
 animate by overscroll offsets. I was surprised that there is no method that would give it back
-the size of overscroll. So I created a solution that able to report it.
+the size of overscroll. (correctly) So I created a solution that able to report it.
 
 # Demo
 
@@ -20,6 +20,7 @@ the size of overscroll. So I created a solution that able to report it.
     - Calculate overscroll size.
 
 2. Use OverScrollHelper on the common scrollable Android views:
+
     | View          | Overscroll version   |
     | ------------- |:-------------------- |
     | ScrollView    | OverScrollScrollView |
@@ -42,29 +43,31 @@ It's a practical tool if you want to build a custom:
 
 There is enough to download only the overscrolls-library which contains all neccessary files.
 
-## Add OverScroll[ScrollView|ListView|WebView] to your XML layout
+## Add OverScroll[...]View to your XML layout
+
+Most common scrollable views prepared to overscroll listening like ScrollView, ListView, WebView, etc....
 
 ```xml
     <com.nirigo.mobile.view.overscrolls.OverScrollScrollView
-        android:id="@+id/scrollview"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <!-- ScrollView content here -->
     </com.nirigo.mobile.view.overscrolls.OverScrollScrollView>
 ```
 
-## Find the view and listening to overscroll events
+## Find view and listening to overscroll events
 
 ```java
-    scrollView = (OverScrollScrollView) findViewById(...);
+    scrollView = (OverScrollScrollView) findViewById(R.id.scrollview.);
     scrollView.getOverScroll().setOnOverScrollListener(new OverScrollListener() {
             public void onScroll(ViewGroup parent, int scrollX, int scrollY) {
-                // On normal scroll
+                // Report normal scroll
             }
             public void onOverScrollStart(ViewGroup parent) {
-                // On over scroll start
+                // Over scroll started
                 // Recommended save original state here (height, position, etc.)
             }
             public void onOverScroll(ViewGroup parent, int overscrollX, int overscrollY) {
@@ -72,7 +75,7 @@ There is enough to download only the overscrolls-library which contains all necc
                 // You can change UI element by offset
             }
             public void onOverScrollCancel(ViewGroup parent) {
-                // Over scroll ended: release or scroll back to normal
+                // Over scroll ended >> release or scroll back to normal
             }
         });
 ```
