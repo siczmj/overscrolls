@@ -87,6 +87,10 @@ Most common scrollable views prepared to overscroll listening like ScrollView, L
 
 ## OverScroll examples
 
+- [ScrollView](https://github.com/siczmj/overscrolls/blob/master/overscrolls-example/src/main/java/com/nirigo/mobile/overscrolls/examples/overscroll/OverScrollScrollViewExampleFragment.java)
+- [ListView](https://github.com/siczmj/overscrolls/blob/master/overscrolls-example/src/main/java/com/nirigo/mobile/overscrolls/examples/overscroll/OverScrollListViewExampleFragment.java)
+- [WebView](https://github.com/siczmj/overscrolls/blob/master/overscrolls-example/src/main/java/com/nirigo/mobile/overscrolls/examples/overscroll/OverScrollWebViewExampleFragment.java)
+
 ## Swipe refresh / Pull to refresh examples
 
 *(in progress)*
@@ -145,8 +149,8 @@ current scroll state. This operation based on [View.getScrollY()](http://develop
 ## Using custom scroll computing
 
 Sometimes it is necessary to define custom scroll computing. Good example is the ListView or WebView
-because to calculate the offset scroll it's complicated. Of course that is implemented by Google but
-the standard getScrollY() not working. So I created a listener to customize the computing current
+because to calculate the offset scroll it's complicated. Of course that is implemented by Google however,
+the View.getScrollY() is not working. So I created a listener to customize the computing current
 scroll.
 
 ```java
