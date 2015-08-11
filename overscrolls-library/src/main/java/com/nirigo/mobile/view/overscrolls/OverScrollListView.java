@@ -55,6 +55,11 @@ public class OverScrollListView extends ListView {
         return overScroll.onTouchEvent(event) || super.onTouchEvent(event);
     }
 
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        overScroll.onScrollChanged();
+        super.onScrollChanged(l, t, oldl, oldt);
+    }
 
     // Getters -----------------------------------------------------------------------------------
     public OverScrollHelper getOverScroll() {

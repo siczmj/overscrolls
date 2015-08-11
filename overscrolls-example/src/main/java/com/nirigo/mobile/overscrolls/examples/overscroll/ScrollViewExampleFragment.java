@@ -43,7 +43,7 @@ public class ScrollViewExampleFragment extends BaseFragment {
         scrollView.getOverScroll().setOnOverScrollListener(new OverScrollListener() {
             public void onScroll(ViewGroup parent, int scrollX, int scrollY) {
                 // On normal scroll
-                showScrollInfo("onScroll: " + scrollY);
+                showScrollInfo("onScroll: " + scrollY); // Just show on screen
             }
 
             public void onOverScrollStart(ViewGroup parent) {
@@ -55,13 +55,13 @@ public class ScrollViewExampleFragment extends BaseFragment {
             public void onOverScroll(ViewGroup parent, int overscrollX, int overscrollY) {
                 // On over scroll in progress
                 setImageViewHeight(originalMeasuredHeight + overscrollY);
-                showScrollInfo("onOverScroll: " + overscrollY);
+
+                showScrollInfo("onOverScroll: " + overscrollY); // Just show on screen
             }
 
             public void onOverScrollCancel(ViewGroup parent) {
                 // On over scroll ended: release or scroll back to normal
                 setImageViewHeight(ViewGroup.MarginLayoutParams.WRAP_CONTENT);
-                hideScrollInfo();
             }
         });
 

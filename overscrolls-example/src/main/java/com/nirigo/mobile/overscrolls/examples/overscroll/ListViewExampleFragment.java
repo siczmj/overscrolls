@@ -51,7 +51,7 @@ public class ListViewExampleFragment extends BaseFragment {
         listview.getOverScroll().setOnOverScrollListener(new OverScrollListener() {
             public void onScroll(ViewGroup parent, int scrollX, int scrollY) {
                 // On normal scroll
-                showScrollInfo("onScroll: " + scrollY);
+                showScrollInfo("onScroll: " + scrollY); // Just show on screen
             }
 
             public void onOverScrollStart(ViewGroup parent) {
@@ -69,15 +69,13 @@ public class ListViewExampleFragment extends BaseFragment {
                     setIndicatorSize(overscrollY);
                 }
 
-                showScrollInfo("onOverScroll: " + overscrollY);
+                showScrollInfo("onOverScroll: " + overscrollY); // Just show on screen
             }
 
             public void onOverScrollCancel(ViewGroup parent) {
                 indicatorTextView.setText(initalText);
                 indicatorTextView.setRotationX(0f);
                 setIndicatorSize(initialSize);
-
-                hideScrollInfo();
             }
         });
 

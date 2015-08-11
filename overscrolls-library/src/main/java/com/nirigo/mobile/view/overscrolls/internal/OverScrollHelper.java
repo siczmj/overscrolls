@@ -25,6 +25,7 @@ public class OverScrollHelper {
     private float startOverScrollY = 0;
     private float currentOverScrollY = 0;
     private int scrollState = STATE_SCROLL_STOPPED;
+    private boolean scrollKinetic = false;
 
     private OverScrollListener onOverScrollListener = null;
     private OverScrollMeasure onOverScrollMeasure = null;
@@ -39,12 +40,13 @@ public class OverScrollHelper {
     public boolean onTouchEvent(MotionEvent event) {
 
         // When nobody watch then do nothing
-        if(onOverScrollListener == null)
+        if (onOverScrollListener == null)
             return false;
 
         int action = event.getAction();
         if (action == MotionEvent.ACTION_DOWN) {
 
+            scrollKinetic = false;
             // Do nothing...
 
         } else if (action == MotionEvent.ACTION_MOVE) {
@@ -78,6 +80,8 @@ public class OverScrollHelper {
 
         } else if (action == MotionEvent.ACTION_UP) {
 
+            scrollKinetic = true;
+
             if (scrollState == STATE_SCROLL_OVER) {
                 scrollState = STATE_SCROLL_STOPPED;
                 postOverScrollCancel();
@@ -88,17 +92,23 @@ public class OverScrollHelper {
         return false;
     }
 
+    public void onScrollChanged() {
+        int newScrollY = getScrollY();
+        if (scrollKinetic && newScrollY > 0)
+            postScroll(0, newScrollY);
+    }
+
     // Functions -----------------------------------------------------------------------------------
-    public int getScrollY(){
-        if(onOverScrollMeasure != null){
+    public int getScrollY() {
+        if (onOverScrollMeasure != null) {
             return onOverScrollMeasure.getScrollY();
-        }else{
+        } else {
             return targetView.getScrollY();
         }
     }
 
     // NOTIFY --------------------------------------------------------------------------------------
-    private void postScroll(int scrollX, int scrollY){
+    private void postScroll(int scrollX, int scrollY) {
         Log.d("o", "Scroll {" + scrollX + " - " + scrollY + "}");
         if (onOverScrollListener != null) {
             onOverScrollListener.onScroll(targetView, scrollX, scrollY);
