@@ -9,7 +9,7 @@ import com.nirigo.mobile.overscrolls.R;
 /**
  * Created by Sicz-Mesziár János on 2015.08.06..
  */
-public class ListViewAdapter extends BaseAdapter {
+public class FakeListViewAdapter extends BaseAdapter {
 
     private String content = "Hello World";
 
@@ -32,7 +32,7 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = View.inflate(parent.getContext(), R.layout.listitem_listview, null);
+            convertView = View.inflate(parent.getContext(), R.layout.listitem_overscroll_listview, null);
         }
 
         return convertView;

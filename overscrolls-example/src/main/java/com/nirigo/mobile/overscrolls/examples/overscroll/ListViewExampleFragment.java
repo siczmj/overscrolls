@@ -1,17 +1,15 @@
-package com.nirigo.mobile.overscrolls.examples;
+package com.nirigo.mobile.overscrolls.examples.overscroll;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.nirigo.mobile.overscrolls.R;
 import com.nirigo.mobile.overscrolls.other.BaseFragment;
-import com.nirigo.mobile.overscrolls.other.ListViewAdapter;
+import com.nirigo.mobile.overscrolls.other.FakeListViewAdapter;
 import com.nirigo.mobile.view.overscrolls.OverScrollListView;
 import com.nirigo.mobile.view.overscrolls.interfaces.OverScrollListener;
 
@@ -21,7 +19,7 @@ import com.nirigo.mobile.view.overscrolls.interfaces.OverScrollListener;
 public class ListViewExampleFragment extends BaseFragment {
 
     private OverScrollListView listview;
-    private ListViewAdapter adapter;
+    private FakeListViewAdapter adapter;
     private View headerView;
     private TextView indicatorTextView;
 
@@ -31,14 +29,14 @@ public class ListViewExampleFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflateFragmentLayout(inflater, container, R.layout.fragment_listview);
+        return inflateFragmentLayout(inflater, container, R.layout.fragment_overscroll_listview);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         listview = (OverScrollListView) this.view;
-        headerView = getLayoutInflater(savedInstanceState).inflate(R.layout.listheader_listview, listview, false);
+        headerView = getLayoutInflater(savedInstanceState).inflate(R.layout.listheader_overscroll_listview, listview, false);
         indicatorTextView = (TextView) headerView.findViewById(R.id.indicator);
     }
 
@@ -47,7 +45,7 @@ public class ListViewExampleFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        adapter = new ListViewAdapter();
+        adapter = new FakeListViewAdapter();
         listview.setAdapter(adapter);
         listview.addHeaderView(headerView);
         listview.getOverScroll().setOnOverScrollListener(new OverScrollListener() {

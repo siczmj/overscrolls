@@ -1,4 +1,4 @@
-package com.nirigo.mobile.overscrolls.examples;
+package com.nirigo.mobile.overscrolls.examples.overscroll;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,7 +25,7 @@ public class ScrollViewExampleFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflateFragmentLayout(inflater, container, R.layout.fragment_scrollview);
+        return inflateFragmentLayout(inflater, container, R.layout.fragment_overscroll_scrollview);
     }
 
     @Override

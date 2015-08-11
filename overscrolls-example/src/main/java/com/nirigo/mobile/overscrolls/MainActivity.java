@@ -1,45 +1,41 @@
 package com.nirigo.mobile.overscrolls;
 
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
-import com.nirigo.mobile.overscrolls.examples.ListViewExampleFragment;
-import com.nirigo.mobile.overscrolls.examples.ScrollViewExampleFragment;
-import com.nirigo.mobile.overscrolls.other.BaseFragment;
-import com.nirigo.mobile.overscrolls.other.ViewPagerAdapter;
-import com.nirigo.mobile.view.overscrolls.OverScrollScrollView;
-import com.nirigo.mobile.view.overscrolls.interfaces.OverScrollListener;
+import com.nirigo.mobile.overscrolls.other.MenuAdapter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+/**
+ * Created by Sicz-Mesziár János on 2015.08.11..
+ */
 public class MainActivity extends AppCompatActivity {
 
-    private ViewPager viewpager;
-    private ViewPagerAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewpager = (ViewPager) findViewById(R.id.viewpager);
+        MenuAdapter adapter = new MenuAdapter();
+        final ListView listView = (ListView) findViewById(R.id.menu);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        List<Class<? extends BaseFragment>> fragments = new ArrayList<>();
-        fragments.add(ScrollViewExampleFragment.class);
-        fragments.add(ListViewExampleFragment.class);
+                MenuAdapter.Menu menu = (MenuAdapter.Menu) listView.getItemAtPosition(position);
+                if(menu.getClassName() != null){
+                    startActivity(new Intent(MainActivity.this, menu.getClassName()));
+                }
 
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
-        viewpager.setAdapter(adapter);
+            }
+        });
 
     }
-
-
 
 
 }

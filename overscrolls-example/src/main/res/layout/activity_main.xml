@@ -1,26 +1,12 @@
-<RelativeLayout
+<?xml version="1.0" encoding="utf-8"?>
+<ListView
+    android:id="@+id/menu"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v4.view.PagerTabStrip
-            android:id="@+id/pager_tab_strip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="#505050"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:textColor="#fff"
-            android:textAllCaps="true"
-            />
-
-    </android.support.v4.view.ViewPager>
-
-</RelativeLayout>
+    android:layout_height="match_parent"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="10dp"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:scrollbarStyle="outsideOverlay"
+    android:clipToPadding="false"
+    />
