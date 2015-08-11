@@ -1,6 +1,7 @@
 package com.nirigo.mobile.overscrolls.other;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,21 @@ public class BaseFragment extends Fragment {
         ((ViewGroup)view.getParent()).removeView(view);
     }
 
+    public BaseActivity getBaseActivity(){
+        if(getActivity() != null && getActivity() instanceof BaseActivity)
+            return (BaseActivity) getActivity();
+        return null;
+    }
+
+    public void hideScrollInfo(){
+        if(getBaseActivity() != null)
+            getBaseActivity().hideScrollInfo();
+    }
+
+    public void showScrollInfo(String text){
+        if(getBaseActivity() != null)
+            getBaseActivity().showScrollInfo(text);
+    }
 
 
 }
