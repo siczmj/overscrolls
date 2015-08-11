@@ -58,12 +58,15 @@ public class OverScrollScrollView extends ScrollView {
         super.onScrollChanged(l, t, oldl, oldt);
     }
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        overScroll.onSizeChanged(w, h, oldw, oldh);
+        super.onSizeChanged(w, h, oldw, oldh);
+    }
 
     // Getters -----------------------------------------------------------------------------------
     public OverScrollHelper getOverScroll() {
         return overScroll;
     }
-
-
 
 }

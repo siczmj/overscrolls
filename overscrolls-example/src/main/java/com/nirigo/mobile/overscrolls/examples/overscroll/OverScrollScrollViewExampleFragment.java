@@ -2,6 +2,7 @@ package com.nirigo.mobile.overscrolls.examples.overscroll;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class OverScrollScrollViewExampleFragment extends BaseFragment {
     private ImageView imageView;
     private int originalHeight;
     private int originalMeasuredHeight;
+    private int originalTop;
 
     @Nullable
     @Override
@@ -34,6 +36,8 @@ public class OverScrollScrollViewExampleFragment extends BaseFragment {
         this.scrollView = (OverScrollScrollView) this.view;
         this.imageView = (ImageView) this.scrollView.findViewById(R.id.image);
     }
+
+    private boolean unpeek;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -50,11 +54,16 @@ public class OverScrollScrollViewExampleFragment extends BaseFragment {
                 // On over scroll start
                 originalHeight = imageView.getLayoutParams().height;        // wrap_content, ...
                 originalMeasuredHeight = imageView.getMeasuredHeight();
+                originalTop = scrollView.getTop();
             }
 
             public void onOverScroll(ViewGroup parent, int overscrollX, int overscrollY) {
                 // On over scroll in progress
                 setImageViewHeight(originalMeasuredHeight + overscrollY);
+
+                // scrollView.getOverScroll().setOnOverScrollListener(null);   // less gap
+                // scrollView.setTop(originalTop + overscrollY);
+                // scrollView.getOverScroll().setOnOverScrollListener(this);
 
                 showScrollInfo("onOverScroll: " + overscrollY); // Just show on screen
             }

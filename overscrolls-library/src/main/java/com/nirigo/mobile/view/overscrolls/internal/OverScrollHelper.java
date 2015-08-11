@@ -23,7 +23,7 @@ public class OverScrollHelper {
 
     private ViewGroup targetView;
     private float startOverScrollY = 0;
-    private float currentOverScrollY = 0;
+    private int currentOverScrollY = 0, lastOverScrollY = 0;
     private int scrollState = STATE_SCROLL_STOPPED;
     private boolean scrollKinetic = false;
 
@@ -55,6 +55,7 @@ public class OverScrollHelper {
 
                 if (scrollState == STATE_SCROLL_OVER) {
                     scrollState = STATE_SCROLL_OVER_END;
+                    startOverScrollY = 0;
                     postOverScrollCancel();
                 } else {
                     scrollState = STATE_SCROLL;
@@ -69,11 +70,15 @@ public class OverScrollHelper {
                     postOverScrollStart();
                 } else {
                     scrollState = STATE_SCROLL_OVER;
-                    currentOverScrollY = event.getY() - startOverScrollY;
+                    currentOverScrollY = (int)(event.getY() - startOverScrollY);
                     if (currentOverScrollY > 0) {
-                        postOverScroll(0, (int) currentOverScrollY);
+                        if(currentOverScrollY != lastOverScrollY) {
+                            lastOverScrollY = currentOverScrollY;
+                            postOverScroll(0, currentOverScrollY);
+                        }
                         return true;
                     }
+
                 }
 
             }
@@ -84,6 +89,7 @@ public class OverScrollHelper {
 
             if (scrollState == STATE_SCROLL_OVER) {
                 scrollState = STATE_SCROLL_STOPPED;
+                startOverScrollY = 0;
                 postOverScrollCancel();
             }
 
@@ -97,6 +103,15 @@ public class OverScrollHelper {
         int newScrollY = getScrollY();
         if (scrollKinetic && newScrollY >= 0)
             postScroll(0, newScrollY);
+    }
+
+    public void onSizeChanged(int w, int h, int oldw, int oldh){
+        // startOverScrollY correction after change e.g. top... for pull-to-refresh
+        if(scrollState == STATE_SCROLL_OVER) {
+            if (h != oldh) {
+                startOverScrollY += h - oldh;
+            }
+        }
     }
 
     // Functions -----------------------------------------------------------------------------------
@@ -138,11 +153,7 @@ public class OverScrollHelper {
     }
 
     // Getters -------------------------------------------------------------------------------------
-    public float getStartOverScrollY() {
-        return startOverScrollY;
-    }
-
-    public float getCurrentOverScrollY() {
+    public int getCurrentOverScrollY() {
         return currentOverScrollY;
     }
 
@@ -162,4 +173,5 @@ public class OverScrollHelper {
     public void setOnOverScrollMeasure(OverScrollMeasure onOverScrollMeasure) {
         this.onOverScrollMeasure = onOverScrollMeasure;
     }
+
 }
