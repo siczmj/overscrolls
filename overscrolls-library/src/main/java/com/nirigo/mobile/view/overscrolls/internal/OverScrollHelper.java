@@ -93,8 +93,9 @@ public class OverScrollHelper {
     }
 
     public void onScrollChanged() {
+        // Report scroll after release screen
         int newScrollY = getScrollY();
-        if (scrollKinetic && newScrollY > 0)
+        if (scrollKinetic && newScrollY >= 0)
             postScroll(0, newScrollY);
     }
 

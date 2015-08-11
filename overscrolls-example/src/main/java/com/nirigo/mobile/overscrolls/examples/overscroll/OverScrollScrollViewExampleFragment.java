@@ -15,7 +15,7 @@ import com.nirigo.mobile.view.overscrolls.interfaces.OverScrollListener;
 /**
  * Created by Sicz-Mesziár János on 2015.08.06..
  */
-public class ScrollViewExampleFragment extends BaseFragment {
+public class OverScrollScrollViewExampleFragment extends BaseFragment {
 
     private OverScrollScrollView scrollView;
     private ImageView imageView;
@@ -62,6 +62,7 @@ public class ScrollViewExampleFragment extends BaseFragment {
             public void onOverScrollCancel(ViewGroup parent) {
                 // On over scroll ended: release or scroll back to normal
                 setImageViewHeight(ViewGroup.MarginLayoutParams.WRAP_CONTENT);
+                showScrollInfo("Cancel");
             }
         });
 

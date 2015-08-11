@@ -1,13 +1,11 @@
 package com.nirigo.mobile.overscrolls;
 
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
-import com.nirigo.mobile.overscrolls.examples.overscroll.ListViewExampleFragment;
-import com.nirigo.mobile.overscrolls.examples.overscroll.ScrollViewExampleFragment;
+import com.nirigo.mobile.overscrolls.examples.overscroll.OverScrollListViewExampleFragment;
+import com.nirigo.mobile.overscrolls.examples.overscroll.OverScrollScrollViewExampleFragment;
+import com.nirigo.mobile.overscrolls.examples.overscroll.OverScrollWebViewExampleFragment;
 import com.nirigo.mobile.overscrolls.other.BaseActivity;
 import com.nirigo.mobile.overscrolls.other.BaseFragment;
 import com.nirigo.mobile.overscrolls.other.ViewPagerAdapter;
@@ -30,8 +28,9 @@ public class OverscrollActivity extends BaseActivity {
         viewpager = (ViewPager) findViewById(R.id.viewpager);
 
         List<Class<? extends BaseFragment>> fragments = new ArrayList<>();
-        fragments.add(ScrollViewExampleFragment.class);
-        fragments.add(ListViewExampleFragment.class);
+        fragments.add(OverScrollScrollViewExampleFragment.class);
+        fragments.add(OverScrollListViewExampleFragment.class);
+        fragments.add(OverScrollWebViewExampleFragment.class);
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
         viewpager.setAdapter(adapter);

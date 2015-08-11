@@ -16,7 +16,7 @@ import com.nirigo.mobile.view.overscrolls.interfaces.OverScrollListener;
 /**
  * Created by Sicz-Mesziár János on 2015.08.06..
  */
-public class ListViewExampleFragment extends BaseFragment {
+public class OverScrollListViewExampleFragment extends BaseFragment {
 
     private OverScrollListView listview;
     private FakeListViewAdapter adapter;
@@ -76,6 +76,8 @@ public class ListViewExampleFragment extends BaseFragment {
                 indicatorTextView.setText(initalText);
                 indicatorTextView.setRotationX(0f);
                 setIndicatorSize(initialSize);
+
+                showScrollInfo("Cancel");
             }
         });
 
