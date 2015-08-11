@@ -61,7 +61,7 @@ Most common scrollable views prepared to overscroll listening like ScrollView, L
 ## Find view and listening overscroll events
 
 ```java
-    scrollView = (OverScrollScrollView) findViewById(R.id.scrollview.);
+    scrollView = (OverScrollScrollView) findViewById(R.id.scrollview);
     scrollView.getOverScroll().setOnOverScrollListener(new OverScrollListener() {
             public void onScroll(ViewGroup parent, int scrollX, int scrollY) {
                 // Report normal scroll
@@ -72,10 +72,11 @@ Most common scrollable views prepared to overscroll listening like ScrollView, L
             }
             public void onOverScroll(ViewGroup parent, int overscrollX, int overscrollY) {
                 // Over scroll in progress...
-                // You can change UI element by offset
+                // You can change UI elements by offset
             }
             public void onOverScrollCancel(ViewGroup parent) {
-                // Over scroll ended >> release or scroll back to normal
+                // Over scroll ended >> release or scroll back to normal scroll
+                // Recommended reset to original state
             }
         });
 ```
@@ -109,9 +110,9 @@ If you want to create own overscroll view that able to report size of overscroll
 use only OverScrollHelper. This class handle the touch events and calculate overscroll size by
 current scroll state. This operation based on [getScrollY()](http://developer.android.com/reference/android/view/View.html#getScrollY()).
 
-    1. You need to extends your View
-    2. Make an instance of OverScrollHelper
-    3. Override the follow events and pass to helper:
+1. You need to extends your View
+2. Make an instance of OverScrollHelper
+3. Override the follow events and pass to helper:
 
     ```java
         public class OverScrollMyView extends MyView{
