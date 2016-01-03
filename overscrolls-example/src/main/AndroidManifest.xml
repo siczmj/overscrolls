@@ -21,26 +21,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".OverscrollActivity"
-            android:label="@string/menu_overscroll"
-            />
-
-        <activity
-            android:name=".PullToRefreshActivity"
-            android:label="@string/menu_pull_to_refresh"
-            />
-
-        <activity
-            android:name=".ParallaxActivity"
-            android:label="@string/menu_parallax"
-            />
-
-        <activity
-            android:name=".EdgeEffectActivity"
-            android:label="@string/menu_edge_effect"
-            />
-
     </application>
 
 </manifest>

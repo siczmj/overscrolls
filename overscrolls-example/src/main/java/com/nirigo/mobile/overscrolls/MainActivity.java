@@ -1,41 +1,42 @@
 package com.nirigo.mobile.overscrolls;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.support.v4.view.ViewPager;
 
-import com.nirigo.mobile.overscrolls.other.MenuAdapter;
+import com.nirigo.mobile.overscrolls.examples.overscroll.OverScrollListViewExampleFragment;
+import com.nirigo.mobile.overscrolls.examples.overscroll.OverScrollScrollViewExampleFragment;
+import com.nirigo.mobile.overscrolls.examples.overscroll.OverScrollWebViewExampleFragment;
+import com.nirigo.mobile.overscrolls.other.BaseActivity;
+import com.nirigo.mobile.overscrolls.other.BaseFragment;
+import com.nirigo.mobile.overscrolls.other.ViewPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Sicz-Mesziár János on 2015.08.11..
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
-
+    private ViewPager viewpager;
+    private ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findScrollInfoTextView();
 
-        MenuAdapter adapter = new MenuAdapter();
-        final ListView listView = (ListView) findViewById(R.id.menu);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        viewpager = (ViewPager) findViewById(R.id.viewpager);
 
-                MenuAdapter.Menu menu = (MenuAdapter.Menu) listView.getItemAtPosition(position);
-                if(menu.getClassName() != null){
-                    startActivity(new Intent(MainActivity.this, menu.getClassName()));
-                }
+        List<Class<? extends BaseFragment>> fragments = new ArrayList<>();
+        fragments.add(OverScrollScrollViewExampleFragment.class);
+        fragments.add(OverScrollListViewExampleFragment.class);
+        fragments.add(OverScrollWebViewExampleFragment.class);
 
-            }
-        });
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
+        viewpager.setAdapter(adapter);
 
     }
-
 
 }
