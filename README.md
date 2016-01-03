@@ -6,8 +6,7 @@ the size of overscroll. (correctly) So I created a solution that able to report 
 
 # Demo
 
-<img src="https://github.com/siczmj/overscrolls/blob/master/screenshots/overscroll_example_android_capture" width="270" height="480" />
-
+<img src="https://github.com/siczmj/overscrolls/blob/master/screenshots/overscroll_example_android_capture.gif" width="270" height="480" />
 
 # Concept
 
