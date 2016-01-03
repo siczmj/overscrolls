@@ -125,28 +125,28 @@ public class OverScrollHelper {
 
     // NOTIFY --------------------------------------------------------------------------------------
     private void postScroll(int scrollX, int scrollY) {
-        Log.d("o", "Scroll {" + scrollX + " - " + scrollY + "}");
+        // Log.d("o", "Scroll {" + scrollX + " - " + scrollY + "}");
         if (onOverScrollListener != null) {
             onOverScrollListener.onScroll(targetView, scrollX, scrollY);
         }
     }
 
     private void postOverScrollStart() {
-        Log.d("o", "Overscroll START...");
+        // Log.d("o", "Overscroll START...");
         if (onOverScrollListener != null) {
             onOverScrollListener.onOverScrollStart(targetView);
         }
     }
 
     private void postOverScroll(int overscrollX, int overScrollY) {
-        Log.d("o", "Overscroll ....... " + overscrollX + " - " + overScrollY);
+        // Log.d("o", "Overscroll ....... " + overscrollX + " - " + overScrollY);
         if (onOverScrollListener != null) {
             onOverScrollListener.onOverScroll(targetView, overscrollX, overScrollY);
         }
     }
 
     private void postOverScrollCancel() {
-        Log.d("o", "Overscroll ...CANCEL");
+        // Log.d("o", "Overscroll ...CANCEL");
         if (onOverScrollListener != null) {
             onOverScrollListener.onOverScrollCancel(targetView);
         }
