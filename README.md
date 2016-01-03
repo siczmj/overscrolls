@@ -1,7 +1,7 @@
 # Android OverScrolls
 
-Originally, my goal was building an unique "pull-to-refresh" effects on Android. I thought it can I
-animate by overscroll offsets. I was surprised that there is no method that would give it back
+Originally, my goal was building an unique "pull-to-refresh" effects on Android. I thought it can 
+animate by overscroll offsets. But I was surprised that there is no method that would give it back
 the size of overscroll. (correctly) So I created a solution that able to report it.
 
 # Demo
@@ -10,7 +10,7 @@ the size of overscroll. (correctly) So I created a solution that able to report 
 
 # Concept
 
-1. Create an OverScrollHelper which following do:
+1. Create an OverScrollHelper class which following do:
     - Handle the touch event and watch the scrolling on Y axis (or maybe later X axis).
     - Introduce new states (overscroll-start, overscroll, overscroll-end)
     - Add a [listener to callback](https://github.com/siczmj/overscrolls/blob/master/overscrolls-library/src/main/java/com/nirigo/mobile/view/overscrolls/interfaces/OverScrollListener.java) when overscroll in progress or other state changed.
@@ -56,7 +56,7 @@ allprojects {
 }
 ```
 
-Add the dependency in the your app gradle files:
+Add the dependency at the end of your /app/build.gradle files:
 ```gradle
 dependencies {
         compile 'com.github.siczmj:overscrolls:v1.0'
