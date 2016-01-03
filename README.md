@@ -1,7 +1,5 @@
 # Android OverScrolls
 
-(In progress...)
-
 Originally, my goal was building an unique "pull-to-refresh" effects on Android. I thought it can I
 animate by overscroll offsets. I was surprised that there is no method that would give it back
 the size of overscroll. (correctly) So I created a solution that able to report it.
@@ -85,24 +83,9 @@ Most common scrollable views prepared to overscroll listening like ScrollView, L
 
 # Examples
 
-## OverScroll examples
-
 - [ScrollView](https://github.com/siczmj/overscrolls/blob/master/overscrolls-example/src/main/java/com/nirigo/mobile/overscrolls/examples/overscroll/OverScrollScrollViewExampleFragment.java)
 - [ListView](https://github.com/siczmj/overscrolls/blob/master/overscrolls-example/src/main/java/com/nirigo/mobile/overscrolls/examples/overscroll/OverScrollListViewExampleFragment.java)
 - [WebView](https://github.com/siczmj/overscrolls/blob/master/overscrolls-example/src/main/java/com/nirigo/mobile/overscrolls/examples/overscroll/OverScrollWebViewExampleFragment.java)
-
-## Swipe refresh / Pull to refresh examples
-
-*(in progress)*
-
-## Parallax scroll examples
-
-*(in progress)*
-
-## EdgeEffect examples
-
-*(in progress)*
-
 
 ------
 
