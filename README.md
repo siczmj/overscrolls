@@ -39,7 +39,31 @@ It's a practical tool if you want to build an unique:
 
 ## Download
 
+### As library project
+
 There is enough to download only the overscrolls-library which contains all neccessary files.
+
+### As Gradle dependency
+
+The AAR file is available using by JitPack. So you need to edit the gradle files and run gradle sync.
+
+Add it in your root build.gradle at the end of repositories:
+```gradle
+allprojects {
+    repositories {
+        ...
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+Add the dependency in the your app gradle files:
+```gradle
+dependencies {
+        compile 'com.github.siczmj:overscrolls:v1.0'
+}
+```
+
 
 ## Add OverScroll[...]View to your XML layout
 
@@ -151,9 +175,6 @@ scroll.
 - Overscroll at bottom of view
 - Overscroll on horizontal axis (ViewPager or HorizontalScrollView)
 - RecycleView support
-- More examples
-- AAR in maven repo
-
 
 ## License
 See the LICENSE file in the project root.
